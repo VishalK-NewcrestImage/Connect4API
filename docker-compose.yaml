@@ -1,0 +1,26 @@
+# docker-compose.yaml
+version: '3'
+services:
+  connect4:
+    image: connect4
+    build:
+      context: Connect4
+      dockerfile: Dockerfile
+    environment:
+      DB: mongodb://mongo_db:27017
+    ports:
+      - 5025:5025
+    links:
+      - mongo_db
+
+
+  mongo_db:
+    image: mongo
+    ports:
+      - 27017:27017
+    command: mongod
+
+
+
+
+
